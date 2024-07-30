@@ -4,23 +4,23 @@ This project provides a Docker-based setup for a persistent Drupal website with 
 
 ## Project Structure
 
-```plaintext
-drupal2
-  ├── drupal-data
-  ├── mariadb-data
-  ├── docker-compose.yml
-  ├── Dockerfile
-  └── .gitignore
 
--  drupal-data/: Directory containing Drupal site data.
--  mariadb-data/: Directory containing MariaDB data.
--  docker-compose.yml: Docker Compose configuration file.
--  Dockerfile: Dockerfile to build the custom Drupal image.
--  .gitignore: Git ignore file to exclude unnecessary files from version control.
+- **drupal-data/**: Directory containing Drupal site data.
+- **mariadb-data/**: Directory containing MariaDB data.
+- **docker-compose.yml**: Docker Compose configuration file.
+- **Dockerfile**: Dockerfile to build the custom Drupal image.
+- **.gitignore**: Git ignore file to exclude unnecessary files from version control.
 
+## Getting Started
 
-##  Getting Started
-###  Prerequisites
--  Docker installed on your machine.
--  Docker Compose installed on your machine.
--  Git installed on your machine.
+### Prerequisites
+
+- Docker installed on your machine.
+- Docker Compose installed on your machine.
+- Git installed on your machine.
+
+### Clone the Repository
+
+```sh
+git clone git@github.com:mesfint/drupal2.git
+cd drupal2
