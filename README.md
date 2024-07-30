@@ -23,3 +23,7 @@ This project provides a Docker-based setup for a persistent Drupal website with 
 ```sh
 git clone git@github.com:mesfint/drupal2.git
 cd drupal2
+```
+
+## Build and Run the Docker Containers
+### Build the Docker Image:
