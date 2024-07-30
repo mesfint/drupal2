@@ -1,0 +1,38 @@
+# Ignore Drupal and MariaDB data directories
+drupal-data/
+mariadb-data/
+
+# Ignore log files and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore node_modules and vendor directories
+node_modules/
+vendor/
+
+# Ignore Composer lock file
+composer.lock
+
+# Ignore Docker-related files
+.dockerignore
+Dockerfile~
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE and editor specific files
+.idea/
+.vscode/
+*.iml
+
+# Ignore other unnecessary files
+*.pid
+*.seed
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

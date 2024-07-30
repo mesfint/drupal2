@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  drupal2:
+    image: mesfinm/drupal-persistent:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - './drupal-data:/opt/drupal'
+    depends_on:
+      - 'mariadb2'   
+  mariadb2:
+    image: 'mariadb'
+    environment:
+      MARIADB_USER: 'mesfint'
+      MARIADB_DATABASE: 'drupal2'
+      MARIADB_ROOT_PASSWORD: 'root'
+      MARIADB_PASSWORD: '123_open'
+    volumes:
+      - './mariadb-data:/var/lib/mysql'
+
+  adminer:
+    image: 'adminer'
+    ports:
+      - "8092:8080"
+    depends_on:
+      - 'mariadb2'
