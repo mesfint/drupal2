@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   drupal2:
-    image: 'drupal:latest'
+    image: 'mesfinm/drupal-persistent:latest'
     ports:
       - "8081:80"
     volumes:
