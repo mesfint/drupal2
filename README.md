@@ -1,14 +1,6 @@
 # Drupal Persistent Setup with Docker
 
-This project provides a Docker-based setup for a persistent Drupal website with a pre-configured MariaDB database. It includes configuration files for Docker Compose to manage the services and uses Docker Hub to store the custom Drupal image.
-
-## Project Structure
-
-- **drupal-data/**: Directory containing Drupal site data.
-- **mariadb-data/**: Directory containing MariaDB data.
-- **docker-compose.yml**: Docker Compose configuration file.
-- **Dockerfile**: Dockerfile to build the custom Drupal image.
-- **.gitignore**: Git ignore file to exclude unnecessary files from version control.
+This project provides a Docker-based setup for a persistent Drupal website with a pre-configured MariaDB database. 
 
 ## Getting Started
 
@@ -16,14 +8,69 @@ This project provides a Docker-based setup for a persistent Drupal website with 
 
 - Docker installed on your machine.
 - Docker Compose installed on your machine.
-- Git installed on your machine.
 
-### Clone the Repository
+### Using the Docker Image
+
+1. **Create a `docker-compose.yml` file:**
+
+    ```yaml
+    version: '3.8'
+    services:
+      drupal:
+        image: mesfinm/drupal-persistent:latest
+        ports:
+          - "8081:80"
+        volumes:
+          - './drupal-data:/var/www/html'
+        depends_on:
+          - 'mariadb'
+      mariadb:
+        image: 'mariadb'
+        environment:
+          MARIADB_USER: 'mesfint'
+          MARIADB_DATABASE: 'drupal'
+          MARIADB_ROOT_PASSWORD: 'root'
+          MARIADB_PASSWORD: '123_open'
+        volumes:
+          - './mariadb-data:/var/lib/mysql'
+      adminer:
+        image: 'adminer'
+        ports:
+          - "8092:8080"
+        depends_on:
+          - 'mariadb'
+    volumes:
+      drupal-data:
+      mariadb-data:
+    ```
+
+2. **Start the Services:**
+
+    ```sh
+    docker-compose up -d
+    ```
+
+   The Drupal site will be accessible at `http://localhost:8081` and Adminer at `http://localhost:8092`.
+
+### Persistent Data
+
+- **drupal-data/**: Stores Drupal site data.
+- **mariadb-data/**: Stores MariaDB data.
+
+These directories are mounted as volumes in the Docker containers to ensure data persists across container restarts.
+
+### Cleaning Up
+
+To stop and remove the containers, run:
 
 ```sh
-git clone git@github.com:mesfint/drupal2.git
-cd drupal2
+docker-compose down
+
 ```
 
-## Build and Run the Docker Containers
-### Build the Docker Image:
+To remove the persistent data, delete the drupal-data and mariadb-data directories:
+
+```sh
+rm -rf drupal-data mariadb-data
+
+```
