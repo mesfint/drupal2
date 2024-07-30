@@ -27,10 +27,10 @@ This project provides a Docker-based setup for a persistent Drupal website with 
       mariadb:
         image: 'mariadb'
         environment:
-          MARIADB_USER: 'mesfint'
-          MARIADB_DATABASE: 'drupal'
           MARIADB_ROOT_PASSWORD: 'root'
-          MARIADB_PASSWORD: '123_open'
+          MARIADB_DATABASE: 'database2'
+          MARIADB_USER: 'database2'
+          MARIADB_PASSWORD: 'database2'
         volumes:
           - './mariadb-data:/var/lib/mysql'
       adminer:
